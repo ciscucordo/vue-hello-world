@@ -1,29 +1,12 @@
+<!DOCTYPE html>
 <html>
-
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<script src="https://unpkg.com/vue"></script>
-</head>
-
-<body>
-	<div id="app-component">
-	  <div>	
-		<adder v-on:todo-adding="addTodo"></adder>
-	  </div>
-	  <ol>
-		<todo-item
-		  v-for="item in todoList"
-		  v-bind:todo="item"
-		  v-bind:key="item.id"
-		  v-on:todo-deleting="deleteTodo"
-		  >
-		</todo-item>
-	  </ol>
-	  <div>
-		<deleter v-on:todo-deleting-all="deleteTodos"></deleter>
-	  </div>	
-	</div>
-	<script src="index.js"></script>
-</body>
-
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>vue-hello-world</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
 </html>
