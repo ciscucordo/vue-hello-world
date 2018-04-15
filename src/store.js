@@ -1,29 +1,43 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+
+import Vue from 'vue';
+import Vuex from 'vuex';
+
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
-    state: {
-        todos: []
+  state: {
+    todos: [],
+  },
+  actions: {
+    ADD_TODO: function ADD_TODO({ commit }, newTodo) {
+      const setNew = {
+        todo: newTodo,
+        status: false,
+      };
+      commit('ADD_TODO_MUTATION', setNew);
     },
-    actions: {
-        ADD_TODO: function ( { commit }, new_todo){
-            var set_new = {
-                todo: new_todo
-            };
-            commit('ADD_TODO', set_new);
-        }
+    COMPLETE_TODO: function COMPLETE_TODO({ commit }, todo) {
+      commit('COMPLETE_TODO_MUTATION', todo);
     },
-    mutations: {
-        ADD_TODO: function (state, new_todo) {
-            state.todos.push(new_todo);
-        }
+  },
+  mutations: {
+    ADD_TODO_MUTATION: function ADD_TODO_MUTATION(state, newTodo) {
+      state.todos.push(newTodo);
     },
-    getters: {
-        todos: state => {
-            return state.todos;
-        }
-    }
+    COMPLETE_TODO_MUTATION: function COMPLETE_TODO_MUTATION(state, todo) {
+      state.todos.find(x => x.todo === todo).status = true;
+    },
+  },
+  getters: {
+    notDone: (state) => {
+      const filtered = state.todos.filter(el => el.status === false);
+      return filtered;
+    },
+    done: (state) => {
+      const filtered = state.todos.filter(el => el.status === true);
+      return filtered;
+    },
+  },
 });
 
-export default store
+export default store;

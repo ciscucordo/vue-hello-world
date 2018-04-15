@@ -1,12 +1,13 @@
-import Vue from 'vue'
-import App from './App'
-import store from './store'
+
+import Vue from 'vue';
+import App from './App';
+import store from './store';
+
+Vue.config.productionTip = false;
 
 new Vue({
-    el: '#app',
-    template: '<App/>',
-    store,
-    components: { 
-        App 
-    }
+  el: '#app',
+  template: '<App/>',
+  store,
+  components: { App },
 });
